@@ -12,4 +12,7 @@ public class Container {
     public static ArticleController getArticleController() {
         return articleController;
     }
+
+    public static void getAllControllers() {
+    }
 }
