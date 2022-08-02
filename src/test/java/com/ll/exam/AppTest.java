@@ -1,7 +1,7 @@
 package com.ll.exam;
 
-import com.ll.exam.article.Service.ArticleService;
 import com.ll.exam.article.controller.ArticleController;
+import com.ll.exam.article.service.ArticleService;
 import com.ll.exam.home.controller.HomeController;
 import org.junit.jupiter.api.Test;
 
@@ -54,7 +54,6 @@ public class AppTest {
         assertThat(names).contains("home");
         assertThat(names).contains("article");
     }
-}
 
     @Test
     public void ioc__articleService() {
@@ -69,5 +68,14 @@ public class AppTest {
         ArticleService articleService2 = Container.getObj(ArticleService.class);
 
         assertThat(articleService2).isEqualTo(articleService1);
+    }
+
+    @Test
+    public void articleController를_생성할때_articleService도_같이_생성() {
+        ArticleController articleController = Container.getObj(ArticleController.class);
+
+        ArticleService articleService = articleController.getArticleServiceForTest();
+
+        assertThat(articleService).isNotNull();
     }
 }
