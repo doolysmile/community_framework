@@ -1,5 +1,6 @@
 package com.ll.exam;
 
+import com.ll.exam.annotation.Controller;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,7 +11,7 @@ public class DispatchServlet extends HttpServlet {
     // 조회
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-
+        ControllerManager.runAction(req, resp);
     }
 
     // 등록
